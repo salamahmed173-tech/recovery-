@@ -122,28 +122,28 @@
     <div class="kpi c3">
       <div class="kpi-icon">🔮</div>
       <div class="kpi-label">6-Month Forecast Total</div>
-      <div class="kpi-val">13,162</div>
+      <div class="kpi-val">18,852</div>
       <div class="kpi-note">Jan–Jun 2026 (Prophet)</div>
     </div>
     <div class="kpi c4">
       <div class="kpi-icon">📉</div>
       <div class="kpi-label">CV RMSE (Best)</div>
-      <div class="kpi-val">11.02</div>
+      <div class="kpi-val">156.68</div>
       <div class="kpi-note">units/month (minimized)</div>
     </div>
     <div class="kpi c5">
       <div class="kpi-icon">⚡</div>
       <div class="kpi-label">In-Sample RMSE</div>
-      <div class="kpi-val">5.75</div>
+      <div class="kpi-val">5.68</div>
       <div class="kpi-note">units/month</div>
     </div>
   </div>
 
   <!-- MODEL INFO STRIP -->
   <div class="rmse-strip">
-    <div>🎯 <strong>Model:</strong> Facebook Prophet — Additive Seasonality</div>
+    <div>🎯 <strong>Model:</strong> Facebook Prophet — Multiplicative Seasonality</div>
     <div class="sep">|</div>
-    <div>⚙️ <strong>Best Params:</strong> changepoint_prior=0.3 &nbsp;|&nbsp; seasonality_prior=1.0 &nbsp;|&nbsp; mode=additive</div>
+    <div>⚙️ <strong>Best Params:</strong> changepoint_prior=0.1 &nbsp;|&nbsp; seasonality_prior=5.0 &nbsp;|&nbsp; mode=multiplicative</div>
     <div class="sep">|</div>
     <div>🔬 <strong>CV Strategy:</strong> Initial 3yr, horizon 6mo, period 3mo</div>
     <div class="sep">|</div>
@@ -196,12 +196,12 @@
             <tr><th>Month</th><th>Forecast Units</th><th>Lower (95%)</th><th>Upper (95%)</th><th>Label</th></tr>
           </thead>
           <tbody>
-            <tr><td>Jan 2026</td><td>2,425.6</td><td>2,408.8</td><td>2,442.9</td><td><span class="tag-fc">Forecast</span></td></tr>
-            <tr><td>Feb 2026</td><td>2,406.8</td><td>2,388.9</td><td>2,422.3</td><td><span class="tag-fc">Forecast</span></td></tr>
-            <tr><td>Mar 2026</td><td>2,229.6</td><td>2,210.9</td><td>2,246.3</td><td><span class="tag-fc">Forecast</span></td></tr>
-            <tr><td>Apr 2026</td><td>2,130.6</td><td>2,111.4</td><td>2,148.9</td><td><span class="tag-fc">Forecast</span></td></tr>
-            <tr><td>May 2026</td><td>2,058.4</td><td>2,038.9</td><td>2,077.5</td><td><span class="tag-fc">Forecast</span></td></tr>
-            <tr><td>Jun 2026</td><td>1,911.2</td><td>1,890.3</td><td>1,930.5</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>Jan 2026</td><td>3,793.2</td><td>3,772.9</td><td>3,813.3</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>Feb 2026</td><td>3,572.4</td><td>3,521.1</td><td>3,623.5</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>Mar 2026</td><td>3,129.6</td><td>3,048.0</td><td>3,212.1</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>Apr 2026</td><td>2,964.1</td><td>2,852.5</td><td>3,072.0</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>May 2026</td><td>2,867.7</td><td>2,716.5</td><td>3,014.5</td><td><span class="tag-fc">Forecast</span></td></tr>
+            <tr><td>Jun 2026</td><td>2,525.2</td><td>2,360.6</td><td>2,692.9</td><td><span class="tag-fc">Forecast</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -239,7 +239,7 @@
   <footer>
     Data Sources: GAC Group Annual Reports · CAAM (China Association of Automobile Manufacturers) Export Statistics · Industry Market Intelligence<br/>
     Model: Facebook Prophet with Hyperparameter Grid Search (30 combinations) · GCC = Saudi Arabia, UAE, Kuwait, Qatar, Oman, Bahrain<br/>
-    Best Params: changepoint_prior_scale=0.3 · seasonality_prior_scale=1.0 · mode=additive · CV RMSE=11.02 · In-sample RMSE=5.75<br/><br/>
+    Best Params: changepoint_prior_scale=0.1 · seasonality_prior_scale=5.0 · mode=multiplicative · CV RMSE=156.68 · In-sample RMSE=5.68<br/><br/>
     GAC Motors GCC Import Intelligence System &mdash; 2026 &nbsp;|&nbsp; Powered by Prophet Forecasting
   </footer>
 
@@ -279,9 +279,9 @@ annuals.forEach((t,yi)=>{
 const fitted=actuals.map(v=>v*1.01);
 
 const fcDates=['2026-01','2026-02','2026-03','2026-04','2026-05','2026-06'];
-const fcYhat=[2425.6,2406.8,2229.6,2130.6,2058.4,1911.2];
-const fcLow=[2408.8,2388.9,2210.9,2111.4,2038.9,1890.3];
-const fcHigh=[2442.9,2422.3,2246.3,2148.9,2077.5,1930.5];
+const fcYhat=[3793.2,3572.4,3129.6,2964.1,2867.7,2525.2];
+const fcLow=[3772.9,3521.1,3048.0,2852.5,2716.5,2360.6];
+const fcHigh=[3813.3,3623.5,3212.1,3072.0,3014.5,2692.9];
 
 // ── Chart 1: Main forecast ─────────────────────────────────
 (()=>{
