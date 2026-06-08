@@ -1,0 +1,11 @@
+# Git ignore for Python project
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.env
+*.log
